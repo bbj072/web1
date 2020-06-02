@@ -1,0 +1,10 @@
+from selenium import webdriver
+driver = webdriver.Chrome('/Users/Jason/Downloads/chromedriver')
+driver.implicitly_wait(3)
+
+driver.get('https://flyasiana.com/C/KR/KO/event/index?menuId=CM201802220000728482')
+from bs4 import BeautifulSoup
+html = driver.page_source
+soup = BeautifulSoup(html, 'html.parser')
+for anchor in soup.select('em.title'):
+       print(anchor.get_text())
